@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class CreateCard extends Component {
   state = {
-    title: '',
-    description: '',
+    title: "",
+    description: ""
   };
 
-  handleChange = (event) => {
+  handleChange = event => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
@@ -20,20 +20,20 @@ class CreateCard extends Component {
     return !this.isValid;
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault();
 
     if (this.isInvalid) return;
 
-    const { onCreateCard } = this.props;
+    const { createCard, listId } = this.props;
 
-    if (onCreateCard) {
-      onCreateCard(this.state);
+    if ((createCard, listId)) {
+      createCard(listId, this.state);
     }
 
     this.setState({
-      title: '',
-      description: '',
+      title: "",
+      description: ""
     });
   };
 
